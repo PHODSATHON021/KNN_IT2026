@@ -9,7 +9,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.header("เป็นโรคหัวใจ")
-    st.image("./img/hart1.jpg")
+    st.image("./img/heart1.jpg")
 
 with col2:
     st.header("ไม่เป็นโรคหัวใจ")
