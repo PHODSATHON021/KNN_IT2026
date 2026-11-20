@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.header("<center><h1>โปรเจคการตรวจโรคหัวใจ</h1></center>")
+st.header("โปรเจคการตรวจโรคหัวใจ")
 
 col1, col2 = st.columns(2)
 
