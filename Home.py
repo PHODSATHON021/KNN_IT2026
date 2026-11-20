@@ -4,36 +4,34 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.header("โปรเจคการจำแนกข้อมูลดอกไม้")
+st.header("โปรเจคการจำแนกข้อมูลโรคหัวใจ")
 #st.image("./img/kairung022.jpg")
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
 with col1:
-   st.header("Versicolor")
+   st.header("ไม่เป็นโรคหัวใจ")
    st.image("./img/iris1.jpg")
 
 with col2:
-   st.header("Verginiga")
+   st.header("เป็นโรคหัวใจ")
    st.image("./img/iris2.jpg")
 
-with col3:
-   st.header("Setosa")
-   st.image("./img/iris3.jpg")
+
 
 html_7 = """
 <div style="background-color:#EC7063;padding:15px;border-radius:15px 15px 15px 15px;border-style:'solid';border-color:black">
-<center><h5>สถิติข้อมูลดอกไม้</h5></center>
+<center><h5>สถิติข้อมูลโรคหัวใจ</h5></center>
 </div>
 """
 st.markdown(html_7, unsafe_allow_html=True)
 st.markdown("")
-dt = pd.read_csv("./data/iris.csv")
+dt = pd.read_csv("./data/Heart3.csv")
 st.write(dt.head(10))
 
-dt1 = dt['petallength'].sum()
-dt2 = dt['petalwidth'].sum()
-dt3 = dt['sepallength'].sum()
-dt4 = dt['sepalwidth'].sum()
+dt1 = dt['Age'].mean()
+dt2 = dt['Sex'].sum()
+dt3 = dt['Cholesterol'].mean()
+dt4 = dt['MaxHR'].mean()
 
 dx = [dt1, dt2, dt3, dt4]
 dx2 = pd.DataFrame(dx, index=["d1", "d2", "d3", "d4"])
@@ -74,11 +72,9 @@ if st.button("ทำนายผล"):
    st.write(Knn_model.predict(x_input))   
    out=Knn_model.predict(x_input)
 
-   if out[0] == 'Setosa':
-    st.image("./img/iris1.jpg")
-   elif out[0] == 'Versicolor':       
-    st.image("./img/iris2.jpg")
+   if out[0] == 'HeartDisease':
+    st.image("./img/heart1.jpg")
    else:
-    st.image("./img/iris3.jpg")
+    st.image("./img/heart2.jpg")
 else:
     st.write("ไม่ทำนาย")
